@@ -1,0 +1,17 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+<h1>설문조사 결과 모음</h1>
+<br>
+    {% for question in questions %}
+    <div class="post">
+        <h2>{{question.question_text}}</h2>
+        <ul>
+            {% for choice in question.choice_set.all %}
+        <li>{{choice.choice_text}} -- {{choice.votes}} vote{{choice.votes|pluralize}}</li>
+        {% endfor %}
+        </ul>
+        <hr>
+    </div>
+    {% endfor %}
+
+{% endblock %}
